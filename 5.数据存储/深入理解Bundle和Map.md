@@ -24,7 +24,7 @@ intent.putExtra("map",myHashMap);
  TreeMap map = (TreeMap) getIntent().getSerializableExtra("map");`
 ```
 
-&emsp;&emsp;然后就会出现一个类转换异常:
+&emsp;&emsp;然后就会出现一个类型转换异常:
 
 ``` java
 java.lang.ClassCastException: java.util.HashMap cannot be cast to java.util.TreeMap`
@@ -145,7 +145,7 @@ Parcel.java
     }
 ```
 
-###第三步：分析写入Map值
+### 第三步：分析写入Map值
 
 ``` java
 Parcel.java
@@ -185,7 +185,7 @@ public final void writeValue(Object v) {
 
 &emsp;&emsp;**虽然TreeMap是以Serializable的类型传入到 bundle，但是在Parcel中writeValue(）方法执行的是map这个分支的代码**---“v instanceof Map”，（“v instanceof Map”在“v instanceOf Serializable”之前）
 
-###第四步：分析将Map写入到Parcel中
+### 第四步：分析将Map写入到Parcel中
 
 &emsp;&emsp;Parcel中的writeMap()方法并没有做什么事，只是将我们传入的Map值强转成Map<String, Object>类型，调用writeMapInternal（）方法。
 
@@ -215,7 +215,7 @@ public final void writeMap(Map val) {
 &emsp;&emsp;**类型擦除使所有的这些代码都不会出现运行时错误。**
 
 
-###第五步：分析读Map
+### 第五步：分析读Map
 
 &emsp;&emsp;让我们来看看Parcel中readValue()这个方法，这个方法和writeValue()相对应。
 
@@ -277,7 +277,8 @@ public final HashMap readHashMap(ClassLoader loader)
 
 ---
 
-&emsp;&emsp;[1.原文链接--The mysterious case of the Bundle and the Map](https://medium.com/the-wtf-files/the-mysterious-case-of-the-bundle-and-the-map-7b15279a794e)
+[1.原文链接--The mysterious case of the Bundle and the Map](https://medium.com/the-wtf-files/the-mysterious-case-of-the-bundle-and-the-map-7b15279a794e)
+[2.相应的源码链接](http://androidxref.com/7.1.2_r36/xref/frameworks/base/core/java/android/os/Parcel.java)
 
 
 
