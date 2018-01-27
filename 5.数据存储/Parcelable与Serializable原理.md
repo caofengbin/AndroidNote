@@ -1,8 +1,9 @@
-﻿# Parcelable与Serializable原理
+# Parcelable与Serializable原理
 
 ---
 
 &emsp;&emsp;进行Android开发的时候，无法将对象的引用传给Activity或者Fragments，我们**需要将这些对象放到一个Intent或者Bundle里面，然后再传递。**
+
 &emsp;&emsp;看api文档的时候，我们认识到有两种选择，我们的对象要么是Parcelable或者Serializable型，那么两种方式的区别在哪儿呢？
 
 ## 1.Serializable--简洁
@@ -23,6 +24,7 @@ public class SerializableDeveloper implements Serializable
 ```
 
 &emsp;&emsp;仅仅需要在它和它的子类上实现Serializable接口就能完成一个漂亮的Serializable功能，他是一个标记接口，意味着不需要实现任何方法，java虚拟机将简单高效地完成序列化工作。
+
 &emsp;&emsp;这里面有个问题就是**这种序列化是通过反射机制从而削弱了性能，这种机制也创建了大量的临时对象从而引起GC频繁回收调用资源。**
 
 ---
@@ -105,6 +107,7 @@ class ParcelableDeveloper implements Parcelable {
 ```
 
 &emsp;&emsp;按照google工程师的说话，这段代码将跑起来非常快，其中一个原因是**运用真实的序列化处理代替反射，为了完成这个目的代码也做了大量的优化。**
+
 &emsp;&emsp;然而，显而易见的是实现Parcelable接口并不是无成本的，创建了大量的引入代码从而导致整个类变得很重同时加大了维护成本。推荐一款插件专门用来生成Parcelable相关的代码--[IntelliJ/Android Studio Plugin for Android Parcelable boilerplate code generation](https://github.com/mcharmas/android-parcelable-intellij-plugin)
 
 ---
@@ -130,4 +133,5 @@ Desire Z |  5.1224ms | 0.2938ms | 17.36倍
 
 
 [原文地址：Parcelable vs Serializable](http://www.developerphil.com/parcelable-vs-serializable/)
+
   [1]: http://static.zybuluo.com/caofengbin/bpabuzifj6bv4eo99w60yapp/image_1c4ream7c1ld01vns1ubq6o01nl2m.png
