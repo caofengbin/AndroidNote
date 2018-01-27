@@ -1,4 +1,4 @@
-﻿# 深入理解Bundle和Map
+# 深入理解Bundle和Map
 
 ---
 
@@ -278,6 +278,7 @@ public final HashMap readHashMap(ClassLoader loader)
 ---
 
 [1.原文链接--The mysterious case of the Bundle and the Map](https://medium.com/the-wtf-files/the-mysterious-case-of-the-bundle-and-the-map-7b15279a794e)
+
 [2.相应的源码链接](http://androidxref.com/7.1.2_r36/xref/frameworks/base/core/java/android/os/Parcel.java)
 
 
