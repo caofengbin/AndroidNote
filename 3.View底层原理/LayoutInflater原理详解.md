@@ -1,4 +1,4 @@
-﻿# LayoutInflater原理详解
+# LayoutInflater原理详解
 
 ---
 
@@ -191,6 +191,7 @@ public View inflate(XmlPullParser parser, @Nullable ViewGroup root, boolean atta
 ```
 
 总结为流程图：
+
 ![image_1c4u3e219q8111u4kc9191n1tjtg.png-37.9kB][流程图]
 
 相关的参数描述：
@@ -210,5 +211,13 @@ root != null| attachRoot==false | 使用xml文件的布局参数
 ---- | ---
 root == null 或者 attachRoot==false | resource所渲染的最外层根view
 root非空 且 attachRoot==true | 根view--即RootView
+
+
+参考链接：
+
+[Android LayoutInflater列传](https://www.jianshu.com/p/1a327be3c6f3?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
+
+[探究Android View 绘制流程，Xml 文件到 View 对象的转换过程](https://www.jianshu.com/p/eccd8ba87e8b)
+
 
   [流程图]: http://static.zybuluo.com/caofengbin/g8dnfbtoc2ohczrb2q67cjk9/image_1c4u3e219q8111u4kc9191n1tjtg.png
